@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For You 🤍</title>
+<title>Let me Eat Yoo Booty 💙</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -10,25 +10,56 @@
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background: linear-gradient(#fff6f8, #fdecef);
-    color: #4a2f36;
+    background: radial-gradient(circle at top, #1c2541, #0b132b);
+    color: #eaeaea;
     overflow-x: hidden;
 }
 
 section {
     min-height: 100vh;
-    padding: 60px 20px;
+    padding: 70px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative;
 }
 
+/* ---------- STARFIELD ---------- */
+.stars {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    animation: drift 10s infinite ease-in-out;
+}
+
+@keyframes drift {
+    0% { transform: translateY(0); opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-20px); opacity: 0.4; }
+}
+
+/* ---------- CONTENT LAYER ---------- */
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------- FADE ---------- */
 .fade {
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 1.2s ease;
+    transform: translateY(25px);
+    transition: all 1.5s ease;
 }
 
 .fade.visible {
@@ -39,24 +70,36 @@ section {
 /* ---------- TEXT ---------- */
 h1 {
     font-weight: normal;
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     margin-bottom: 20px;
+    text-shadow: 0 0 12px rgba(58,134,255,0.3);
 }
 
 p {
-    max-width: 700px;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin: 10px 0;
+    max-width: 720px;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin: 12px 0;
+}
+
+/* ---------- BREATHING TEXT ---------- */
+.breathe {
+    animation: breathe 5s infinite ease-in-out;
+}
+
+@keyframes breathe {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
 }
 
 /* ---------- MUSIC ---------- */
 #musicBtn {
     margin-top: 30px;
-    padding: 10px 20px;
-    border-radius: 30px;
+    padding: 12px 26px;
+    border-radius: 40px;
     border: none;
-    background: #f5b7c7;
+    background: #3a86ff;
     color: #fff;
     cursor: pointer;
     font-size: 1rem;
@@ -66,53 +109,51 @@ p {
 .cards {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
     margin-top: 30px;
 }
 
 .card {
-    background: #ffffffcc;
-    padding: 15px 20px;
+    background: rgba(255,255,255,0.08);
+    padding: 18px 22px;
     border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    backdrop-filter: blur(4px);
 }
 
-/* ---------- HEART GAME ---------- */
-.hearts {
+/* ---------- CONSTELLATION ---------- */
+.constellation {
     position: relative;
     width: 100%;
-    height: 300px;
-    margin-top: 30px;
+    height: 320px;
+    margin-top: 40px;
 }
 
-.heart {
+.node {
     position: absolute;
-    font-size: 2rem;
+    width: 16px;
+    height: 16px;
+    background: #3a86ff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #3a86ff;
     cursor: pointer;
-    animation: float 6s infinite ease-in-out;
 }
 
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0); }
-}
-
-#heartMessage {
+#constellationText {
     margin-top: 30px;
     font-style: italic;
 }
 
-/* ---------- ASK SECTION ---------- */
+/* ---------- ASK ---------- */
 .buttons {
     position: relative;
+    width: 100%;
+    height: 200px;
     margin-top: 40px;
-    height: 150px;
 }
 
 button.choice {
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    padding: 16px 36px;
+    font-size: 1.15rem;
     border-radius: 40px;
     border: none;
     cursor: pointer;
@@ -121,27 +162,35 @@ button.choice {
 }
 
 #yesBtn {
-    background: #f28db2;
+    background: #3a86ff;
     color: white;
-    left: 40%;
+    left: 35%;
+    animation: pulse 3s infinite;
 }
 
 #noBtn {
-    background: #e0a3b5;
+    background: #1c2541;
     color: white;
     left: 55%;
+}
+
+/* YES pulse */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 rgba(58,134,255,0.4); }
+    50% { box-shadow: 0 0 20px rgba(58,134,255,0.8); }
+    100% { box-shadow: 0 0 0 rgba(58,134,255,0.4); }
 }
 
 /* YES shake */
 @keyframes shake {
     0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-6px); }
     100% { transform: translateX(0); }
 }
 
-/* ---------- FINAL MESSAGE ---------- */
+/* ---------- FINAL ---------- */
 #final {
     display: none;
 }
@@ -150,153 +199,142 @@ button.choice {
 
 <body>
 
-<!-- MUSIC -->
+<div class="stars" id="stars"></div>
+
 <audio id="music" loop>
-    <!-- Replace src with your chosen soft instrumental -->
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <!-- SECTION 1 -->
-<section class="fade">
-    <h1>Hi love 🤍</h1>
-    <p>
-        I made this slowly.<br>
-        With intention.<br>
-        And with you in my heart the whole time.
-    </p>
-    <p>
-        There’s no rush here.<br>
-        Take a breath.<br>
-        This is just for you my katbooty.
-    </p>
-    <button id="musicBtn">Play something soft 🎧</button>
+<section class="fade content">
+    <h1 class="breathe">Hi love 💙</h1>
+    <p>I made this slowly.<br>With intention.<br>With you in mind.</p>
+    <p>There’s no rush here.<br>This is just for you.</p>
+    <button id="musicBtn">Play something nice 🎧</button>
 </section>
 
 <!-- SECTION 2 -->
-<section class="fade">
+<section class="fade content">
     <p>You feel things deeply.</p>
-    <p>You love honestly, even when it’s scary.</p>
-    <p>You notice the small things most people miss.</p>
-    <p>You carry so much emotion in such a gentle way.</p>
-    <p>You love love… not loudly, but beautifully.</p>
-    <p><strong>And I see all of it.</strong></p>
-    <p><strong>I see you.</strong></p>
+    <p>You love honestly.</p>
+    <p>You notice what others miss.</p>
+    <p>You love love, beautifully.</p>
+    <p class="breathe"><strong>And I see you.</strong></p>
 </section>
 
 <!-- SECTION 3 -->
-<section class="fade">
-    <h1>Us, apparently 💭</h1>
+<section class="fade content">
+    <h1>Us, apparently 🌌</h1>
     <div class="cards">
-        <div class="card">Us trying to be serious people.</div>
-        <div class="card">Us overthinking one small thing and laughing five minutes later.</div>
-        <div class="card">Us being soft, emotional, and still chaotic.</div>
-        <div class="card">Us loving deeply and joking through it anyway.</div>
+        <div class="card">Us trying to be serious.</div>
+        <div class="card">Us overthinking, then laughing.</div>
+        <div class="card">Us being soft and chaotic.</div>
+        <div class="card">Us loving deeply anyway.</div>
     </div>
 </section>
 
 <!-- SECTION 4 -->
-<section class="fade">
-    <p>There’s something I want to show you.</p>
-    <p>But first… help me unlock it 🤍</p>
-
-    <div class="hearts">
-        <div class="heart" style="left:20%; top:40%">🤍</div>
-        <div class="heart" style="left:50%; top:20%">🤍</div>
-        <div class="heart" style="left:70%; top:50%">🤍</div>
-        <div class="heart" style="left:35%; top:60%">🤍</div>
+<section class="fade content">
+    <p>Touch the stars 🤍</p>
+    <div class="constellation">
+        <div class="node" style="top:20%; left:30%"></div>
+        <div class="node" style="top:50%; left:60%"></div>
+        <div class="node" style="top:70%; left:40%"></div>
+        <div class="node" style="top:35%; left:70%"></div>
     </div>
-
-    <div id="heartMessage"></div>
+    <div id="constellationText"></div>
 </section>
 
 <!-- SECTION 5 -->
-<section class="fade">
+<section class="fade content">
     <p>I don’t love loudly.</p>
     <p>I love intentionally.</p>
-    <p>I think about how you feel.</p>
     <p>I think about how to love you gently.</p>
-    <p>I don’t always get it perfect.</p>
-    <p>But loving you feels natural to me.</p>
+    <p>Loving you feels natural.</p>
 </section>
 
 <!-- SECTION 6 -->
-<section class="fade">
+<section class="fade content">
     <p>So this Valentine’s Day…</p>
-    <p>and not just for the day…</p>
     <h1>Will you be my Valentine? 💌</h1>
-
     <div class="buttons">
-        <button id="yesBtn" class="choice">Yes 🤍</button>
+        <button id="yesBtn" class="choice">Yes 💙</button>
         <button id="noBtn" class="choice">No</button>
     </div>
 </section>
 
-<!-- SECTION 7 -->
-<section id="final">
-    <h1>I’m really glad it’s you 🌹</h1>
-    <p>
-        I don’t promise perfection.<br>
-        I promise presence.<br>
-        And a lot of laughing along the way.
-    </p>
-    <p>Happy Valentine’s Day, my love.</p>
+<!-- FINAL -->
+<section id="final" class="content">
+    <h1>I choose you 🌊</h1>
+    <p>Again. And again.</p>
+    <p>Now come smash me.</p>
 </section>
 
 <script>
-/* ---------- FADE IN ---------- */
+/* ---------- STARS ---------- */
+const starContainer = document.getElementById('stars');
+for (let i = 0; i < 120; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDuration = 5 + Math.random() * 10 + 's';
+    starContainer.appendChild(star);
+}
+
+/* ---------- FADE ---------- */
 const faders = document.querySelectorAll('.fade');
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
     });
 }, { threshold: 0.3 });
-
-faders.forEach(fade => observer.observe(fade));
+faders.forEach(f => observer.observe(f));
 
 /* ---------- MUSIC ---------- */
-const music = document.getElementById('music');
 document.getElementById('musicBtn').onclick = () => {
+    const music = document.getElementById('music');
     music.volume = 0.5;
     music.play();
 };
 
-/* ---------- HEART GAME ---------- */
+/* ---------- CONSTELLATION ---------- */
 const messages = [
     "You make love feel safe.",
-    "You remind me that softness is strength.",
-    "You make me want to show up better.",
-    "You make ordinary days feel warmer.",
-    "Loving you feels like choosing you—over and over."
+    "You calm me.",
+    "You make me smile.",
+    "You feel like home."
 ];
-
-let heartClicks = 0;
-document.querySelectorAll('.heart').forEach(heart => {
-    heart.onclick = () => {
-        if (heartClicks < messages.length) {
-            document.getElementById('heartMessage').innerText = messages[heartClicks];
-            heart.style.opacity = 0;
-            heartClicks++;
+let clicks = 0;
+document.querySelectorAll('.node').forEach(node => {
+    node.onclick = () => {
+        if (clicks < messages.length) {
+            document.getElementById('constellationText').innerText = messages[clicks];
+            node.style.opacity = 0;
+            clicks++;
         }
     };
 });
 
-/* ---------- RUNAWAY NO BUTTON ---------- */
+/* ---------- RUNAWAY NO (TRUE X-Y, MOBILE SAFE) ---------- */
 const noBtn = document.getElementById('noBtn');
 const yesBtn = document.getElementById('yesBtn');
 let yesScale = 1;
 
-noBtn.addEventListener('mouseenter', () => {
-    const x = Math.random() * 60;
-    const y = Math.random() * 80;
-    noBtn.style.left = x + '%';
-    noBtn.style.top = y + '%';
-});
+function moveNoButton() {
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+}
 
-/* ---------- IF NO IS CLICKED ---------- */
+noBtn.addEventListener('mouseenter', moveNoButton);
+noBtn.addEventListener('touchstart', moveNoButton);
+
 noBtn.onclick = () => {
-    yesScale += 0.15;
+    yesScale += 0.18;
     yesBtn.style.transform = `scale(${yesScale})`;
     yesBtn.style.animation = 'shake 0.4s';
     setTimeout(() => yesBtn.style.animation = '', 400);
