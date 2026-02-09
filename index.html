@@ -201,8 +201,8 @@ button.choice {
 
 <div class="stars" id="stars"></div>
 
-<audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
+<audio id="music" preload="auto">
+  <source src="./music.mp3" type="audio/mpeg">
 </audio>
 
 <!-- SECTION 1 -->
@@ -210,7 +210,7 @@ button.choice {
     <h1 class="breathe">Hi love 💙</h1>
     <p>I made this slowly.<br>With intention.<br>With you in mind.</p>
     <p>There’s no rush here.<br>This is just for you.</p>
-    <button id="musicBtn">Play something nice 🎧</button>
+    <button id="musicBtn">this doesnt work 🎧</button>
 </section>
 
 <!-- SECTION 2 -->
@@ -218,18 +218,18 @@ button.choice {
     <p>You feel things deeply.</p>
     <p>You love honestly.</p>
     <p>You notice what others miss.</p>
-    <p>You love love, beautifully.</p>
+    <p>You love love, bombastically.</p>
     <p class="breathe"><strong>And I see you.</strong></p>
 </section>
 
 <!-- SECTION 3 -->
 <section class="fade content">
-    <h1>Us, apparently 🌌</h1>
+    <h1>Things I love about you🌌</h1>
     <div class="cards">
-        <div class="card">Us trying to be serious.</div>
-        <div class="card">Us overthinking, then laughing.</div>
-        <div class="card">Us being soft and chaotic.</div>
-        <div class="card">Us loving deeply anyway.</div>
+        <div class="card">I love the way you are stubborn.</div>
+        <div class="card"> How you overthink,and get confused.</div>
+        <div class="card">Your beautiful soul and body.</div>
+        <div class="card">I love that you love me.</div>
     </div>
 </section>
 
@@ -249,7 +249,7 @@ button.choice {
 <section class="fade content">
     <p>I don’t love loudly.</p>
     <p>I love intentionally.</p>
-    <p>I think about how to love you gently.</p>
+    <p>I want to make you feel loved.</p>
     <p>Loving you feels natural.</p>
 </section>
 
@@ -271,6 +271,25 @@ button.choice {
 </section>
 
 <script>
+const music = document.getElementById('music');
+const musicBtn = document.getElementById('musicBtn');
+
+musicBtn.addEventListener('click', () => {
+    music.load();
+    music.volume = 0.5;
+
+    const playPromise = music.play();
+    if (playPromise !== undefined) {
+        playPromise
+            .then(() => {
+                musicBtn.innerText = "Music playing 💙";
+            })
+            .catch(err => {
+                alert("Tap again to enable sound 💙");
+            });
+    }
+});
+
 /* ---------- STARS ---------- */
 const starContainer = document.getElementById('stars');
 for (let i = 0; i < 120; i++) {
